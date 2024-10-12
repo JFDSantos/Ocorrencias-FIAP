@@ -3,7 +3,7 @@ on:
     push:
         branches: 
           - master 
-          - stagging
+          - staging
  
 jobs:
     build:
@@ -42,7 +42,7 @@ jobs:
         needs: build
         if: github.ref == 'refs/heads/staging'
         environment:
-          name: 'stagging'
+          name: 'staging'
           url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
         steps:
