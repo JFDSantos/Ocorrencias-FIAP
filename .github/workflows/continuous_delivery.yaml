@@ -26,9 +26,9 @@ jobs:
             with:
                 username: ${{ secrets.DOCKERHUB_USERNAME }}
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
-                
+
         -   name: Run Tests
-            run: dotnet test ./Fiap.Web.Ocorrencia.Tests/Fiap.Web.Ocorrencia.Tests.csproj       
+            run: dotnet test ./Fiap.Web.Ocorrencia.Testes/Fiap.Web.Ocorrencia.Testes.csproj       
 
         -   name: Build 
             uses: docker/build-push-action@v6 
