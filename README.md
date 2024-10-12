@@ -29,26 +29,30 @@ git config --global user.email "seuemail@example.com"
 git config --global user.name "Seu Nome"
 ```
 ### 3. Digite um comentário 
-digite teste em HMA
+Digite teste em HMA
 ![image](https://github.com/user-attachments/assets/c36d12ce-a072-491b-971d-565bcd661be5)
 
-### 3. Crie a branch staging
+### 4. Crie a branch staging
+```bash
 git checkout Homologacao
+```
 
-### 4. Suba o sistema para Homologacao
+### 5. Suba o sistema para Homologacao
 ```bash
 git add .
 git commit -m "Subindo para HMA"
 git push 
 ```
-### 3. Volte a branch master
+### 6. Volte a branch master
+```bash
 git switch master
+```
 
-### 3. Digite um comentário 
+### 7. Digite um comentário 
 digite teste em PRD
 ![image](https://github.com/user-attachments/assets/ba9dd927-560c-457b-a0ff-d481ac6ceb56)
 
-### 4. Suba o sistema para homologação
+### 8. Suba o sistema para homologação
 ```bash
 git add .
 git commit -m "Subindo para PRD"
