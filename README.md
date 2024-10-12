@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/0388344b-a484-4627-bae6-20c4c4184678)
 # Ocorrencia
 
 Fiap.Web.Ocorrencia é uma aplicação web desenvolvida em .NET Core que permite o gerenciamento de ocorrências relacionadas a serviços de emergência, como polícia, bombeiros e ambulâncias. O sistema utiliza o Docker para containerização e pode ser facilmente configurado para rodar tanto em ambientes de desenvolvimento, homologação e produção.
@@ -47,6 +46,7 @@ git switch master
 
 ### 3. Digite um comentário 
 digite teste em PRD
+![image](https://github.com/user-attachments/assets/ba9dd927-560c-457b-a0ff-d481ac6ceb56)
 
 ### 4. Suba o sistema para homologação
 ```bash
