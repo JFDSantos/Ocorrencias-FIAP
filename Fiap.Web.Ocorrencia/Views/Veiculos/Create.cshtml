@@ -1,0 +1,32 @@
+﻿@model Fiap.Web.Ocorrencias.ViewModel.VeiculoCreateViewModel
+<h1>Veículos</h1>
+
+<h4>Novo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-controller="Veiculos">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="placa" class="control-label"></label>
+                <input asp-for="placa" class="form-control" />
+                <span asp-validation-for="placa" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="id_serv_emergencia" class="control-label"></label>
+                <select asp-for="id_serv_emergencia" asp-items="@Model.ServEmergencia" class="form-select">
+                    <option value="0">Selecione</option>
+                </select>
+                <span asp-validation-for="id_serv_emergencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

@@ -1,0 +1,35 @@
+﻿@model Fiap.Web.Ocorrencias.Models.LocalizacaoModel
+
+<h1>Localização</h1>
+
+<h4>Detalhe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label asp-for="endereco" class="control-label fw-bold"></label>
+            <div class="col-md-10">
+                <span>@Model.endereco</span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="cidade" class="control-label fw-bold"></label>
+            <div class="col-md-10">
+                <span>@Model.cidade</span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="cep" class="control-label fw-bold"></label>
+            <div class="col-md-10">
+                <span>@Model.cep</span>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

@@ -1,0 +1,30 @@
+﻿@model Fiap.Web.Ocorrencias.Models.GravidadeModel
+
+<h1>Gravidade</h1>
+
+<h4>Editar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <!-- IMPORTANTE elemento form -->
+        <form asp-action="Edit" asp-controller="Gravidade">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- IMPORTANTE propriedade ClienteId oculto -->
+            <input type="hidden" asp-for="id_gravidade" />
+
+            <div class="form-group">
+                <label asp-for="descricao" class="control-label"></label>
+                <input asp-for="descricao" class="form-control" />
+                <span asp-validation-for="descricao" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Gravar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

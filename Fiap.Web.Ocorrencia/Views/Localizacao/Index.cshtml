@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Fiap.Web.Ocorrencias.Models.LocalizacaoModel>
+
+<h1>Localização</h1>
+
+@if (!string.IsNullOrEmpty((String)TempData["mensagemSucesso"]))
+{
+    <div class="alert alert-warning" role="alert">@TempData["mensagemSucesso"]</div>
+}
+
+
+<p>
+    <a asp-controller="Localizacao" asp-action="Create">Nova Localização</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Endereço</th>
+            <th>Ciade</th>
+            <th>CEP</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.id_loc</label>
+                </td>
+                <td>
+                    <label>@item.endereco</label>
+                </td>
+                <td>
+                    <label>@item.cidade</label>
+                </td>
+                <td>
+                    <label>@item.cep</label>
+                </td>
+                <td>
+                    <!-- asp-route-id é usado para informar o Id do Item selecionado. -->
+                    <a asp-controller="Localizacao"
+                       asp-action="Edit"
+                       asp-route-id="@item.id_loc">Editar</a>
+
+                    <a asp-controller="Localizacao"
+                       asp-action="Detail"
+                       asp-route-id="@item.id_loc">Consultar</a>
+
+                    <a asp-controller="Localizacao"
+                       asp-action="Delete"
+                       asp-route-id="@item.id_loc">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

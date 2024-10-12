@@ -1,0 +1,41 @@
+﻿@model Fiap.Web.Ocorrencias.Models.OcorrenciaModel
+
+<h1>Ocorrência</h1>
+
+<h4>Detalhe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label asp-for="descricao" class="control-label fw-bold">Descrição</label>
+            <div class="col-md-10">
+                <span>@Model.descricao</span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group"> 
+            <label asp-for="data_hora" class="control-label fw-bold">Data/Hora</label>
+            <div class="col-md-10">
+                <span>@Model.data_hora</span>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <label asp-for="id_gravidade" class="control-label fw-bold">Gravidade</label>
+            <div class="col-md-10">
+                <span>@Model.Gravidade.descricao</span>
+            </div>
+        </div>
+        <br /> x
+        <div class="form-group">
+            <label asp-for="id_loc" class="control-label fw-bold">Localização</label>
+            <div class="col-md-10">
+                <span>@Model.Localizacao.endereco</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

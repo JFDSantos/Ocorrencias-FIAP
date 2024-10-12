@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Fiap.Web.Ocorrencias.Models.ServicoEmergenciaModel>
+
+<h1>Serviço</h1>
+
+@if (!string.IsNullOrEmpty((String)TempData["mensagemSucesso"]))
+{
+    <div class="alert alert-warning" role="alert">@TempData["mensagemSucesso"]</div>
+}
+
+
+<p>
+    <a asp-controller="ServicoEmergencia" asp-action="Create">Novo Serviço</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Telefone</th>
+            <th>Gravidade Atendida</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.id_serv_emergencia</label>
+                </td>
+                <td>
+                    <label>@item.descricao</label>
+                </td>
+                <td>
+                    <label>@item.telefone</label>
+                </td>
+                <td>
+                    <label>@item.Gravidade.descricao</label>
+                </td>
+                <td>
+                    <a asp-controller="ServicoEmergencia"
+                       asp-action="Edit"
+                       asp-route-id="@item.id_serv_emergencia">Editar</a>
+
+                    <a asp-controller="ServicoEmergencia"
+                       asp-action="Detail"
+                       asp-route-id="@item.id_serv_emergencia">Consultar</a>
+
+                    <a asp-controller="ServicoEmergencia"
+                       asp-action="Delete"
+                       asp-route-id="@item.id_serv_emergencia">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

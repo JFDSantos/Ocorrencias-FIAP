@@ -1,0 +1,21 @@
+﻿@model Fiap.Web.Ocorrencias.Models.GravidadeModel
+
+<h1>Gravidade</h1>
+
+<h4>Detalhe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <div class="form-group">
+            <label asp-for="descricao" class="control-label fw-bold"></label>
+            <div class="col-md-10">
+                <span>@Model.descricao</span>
+            </div>
+        </div>
+        <br />
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

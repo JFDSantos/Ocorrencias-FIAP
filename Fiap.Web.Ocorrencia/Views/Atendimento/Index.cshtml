@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Fiap.Web.Ocorrencias.Models.AtendimentoModel>
+
+<h1>Clientes</h1>
+
+@if (!string.IsNullOrEmpty((String)TempData["mensagemSucesso"]))
+{
+    <div class="alert alert-warning" role="alert">@TempData["mensagemSucesso"]</div>
+}
+
+
+<p>
+    <a asp-controller="Cliente" asp-action="Create">Novo Cliente</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Status</th>
+            <th>Ocorrência</th>
+            <th>Veículo</th>
+            <th>Serviço de Emergência</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.id_atendimento</label>
+                </td>
+                <td>
+                    <label>@item.descricao</label>
+                </td>
+                <td>
+                    <label>@item.Status</label>
+                </td>
+                <td>
+                    <label>@item.Ocorrencia.descricao</label>
+                </td>
+                <td>
+                    <label>@item.Veiculo.placa</label>
+                </td>
+                <td>
+                    <label>@item.ServicoEmergencia.descricao</label>
+                </td>
+                <td>
+                    <!-- asp-route-id é usado para informar o Id do Item selecionado. -->
+                    <a asp-controller="Cliente"
+                       asp-action="Edit"
+                       asp-route-id="@item.id_atendimento">Editar</a>
+
+                    <a asp-controller="Cliente"
+                       asp-action="Detail"
+                       asp-route-id="@item.id_atendimento">Consultar</a>
+
+                    <a asp-controller="Cliente"
+                       asp-action="Delete"
+                       asp-route-id="@item.id_atendimento">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
