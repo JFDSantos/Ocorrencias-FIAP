@@ -71,3 +71,4 @@ jobs:
               slot-name: 'production'
               publish-profile: ${{ secrets.AZURE_PROFILE_PRODUCTION }}
               images: 'index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ocorrencias-fiap:${{ github.sha }}'
+

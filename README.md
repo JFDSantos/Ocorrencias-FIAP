@@ -34,14 +34,14 @@ Digite teste em HMA
 
 ### 4. Crie a branch staging
 ```bash
-git checkout staging
+git checkout -b staging
 ```
 
 ### 5. Suba o sistema para Homologacao
 ```bash
 git add .
 git commit -m "Subindo para HMA"
-git push 
+git push --set-upstream origin staging 
 ```
 ### 6. Volte a branch master
 ```bash
