@@ -34,7 +34,7 @@ Digite teste em HMA
 
 ### 4. Crie a branch staging
 ```bash
-git checkout Homologacao
+git checkout staging
 ```
 
 ### 5. Suba o sistema para Homologacao
