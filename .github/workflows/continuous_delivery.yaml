@@ -3,6 +3,7 @@ on:
     push:
         branches: 
           - master 
+          - stagging
  
 jobs:
     build:
@@ -25,17 +26,39 @@ jobs:
             with:
                 username: ${{ secrets.DOCKERHUB_USERNAME }}
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
-        - 
-            name: Build 
+                
+        -   name: Run Tests
+            run: dotnet test ./Fiap.Web.Ocorrencia.Tests/Fiap.Web.Ocorrencia.Tests.csproj       
+
+        -   name: Build 
             uses: docker/build-push-action@v6 
             with: 
                 file: ./Fiap.Web.Ocorrencia/Dockerfile
                 push: true
                 tags: index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ocorrencias-fiap:${{ github.sha }}
 
-    deploy:
+    deploy-staging:
         runs-on: ubuntu-latest
         needs: build
+        if: github.ref == 'refs/heads/staging'
+        environment:
+          name: 'stagging'
+          url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+        steps:
+        -   name: Deploy to Azure Web App
+            id: deploy-to-webapp
+            uses: azure/webapps-deploy@v2
+            with:
+              app-name: 'Ocorrencias-Fiap'
+              slot-name: 'stagging'
+              publish-profile: ${{ secrets.AZURE_PROFILE }}
+              images: 'index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ocorrencias-fiap:${{ github.sha }}'
+
+    deploy-production:
+        runs-on: ubuntu-latest
+        needs: build
+        if: github.ref == 'refs/heads/master'
         environment:
           name: 'production'
           url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
@@ -45,7 +68,7 @@ jobs:
             id: deploy-to-webapp
             uses: azure/webapps-deploy@v2
             with:
-              app-name: 'Ocorrencias-Fiap'
+              app-name: 'Ocorrencias-Fiap-Producao'
               slot-name: 'production'
-              publish-profile: ${{ secrets.AZURE_PROFILE }}
+              publish-profile: ${{ secrets.AZURE_PROFILE_PRODUCTION }}
               images: 'index.docker.io/${{ secrets.DOCKERHUB_USERNAME }}/ocorrencias-fiap:${{ github.sha }}'
