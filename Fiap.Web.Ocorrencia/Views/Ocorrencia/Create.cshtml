@@ -1,0 +1,49 @@
+﻿@model Fiap.Web.Ocorrencias.ViewModel.OcorrenciaCreateViewModel
+
+<h1>Ocorrência</h1>
+
+<h4>Novo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-controller="Ocorrencia">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="descricao" class="control-label"></label>
+                <input asp-for="descricao" class="form-control" />
+                <span asp-validation-for="descricao" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="data_hora" class="control-label"></label>
+                <input asp-for="data_hora" class="form-control" />
+                <span asp-validation-for="data_hora" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="id_loc" class="control-label"></label>
+                <select asp-for="id_loc" asp-items="@Model.Localizacao" class="form-select">
+                    <option value="0">Selecione</option>
+                </select>
+                <span asp-validation-for="id_loc" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="id_gravidade" class="control-label"></label>
+                <select asp-for="id_gravidade" asp-items="@Model.Gravidade" class="form-select">
+                    <option value="0">Selecione</option>
+                </select>
+                <span asp-validation-for="id_gravidade" class="text-danger"></span>
+            </div>
+            <br />
+            
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>

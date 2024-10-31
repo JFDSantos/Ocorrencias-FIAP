@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Fiap.Web.Ocorrencias.Models.OcorrenciaModel>
+
+<h1>Ocorrência</h1>
+
+@if (!string.IsNullOrEmpty((String)TempData["mensagemSucesso"]))
+{
+    <div class="alert alert-warning" role="alert">@TempData["mensagemSucesso"]</div>
+}
+
+
+<p>
+    <a asp-controller="Ocorrencia" asp-action="Create">Nova Ocorrência</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Data/Hora</th>
+            <th>Localização</th>
+            <th>Gravidade</th>
+            <th>Atendimento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.id_ocorrencia</label>
+                </td>
+                <td>
+                    <label>@item.descricao</label>
+                </td>
+                <td>
+                    <label>@item.data_hora</label>
+                </td>
+                <td>
+                    <label>@item.Localizacao.endereco</label>
+                </td>
+                <td>
+                    <label>@item.Gravidade.descricao</label>
+                </td>
+                <td>
+                    <label>@item.id_atendimento</label>
+                </td>
+                <td>
+                    <a asp-controller="Ocorrencia"
+                       asp-action="Edit"
+                       asp-route-id="@item.id_ocorrencia">Editar</a>
+
+                    <a asp-controller="Ocorrencia"
+                       asp-action="Detail"
+                       asp-route-id="@item.id_ocorrencia">Consultar</a>
+
+                    <a asp-controller="Ocorrencia"
+                       asp-action="Delete"
+                       asp-route-id="@item.id_ocorrencia">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

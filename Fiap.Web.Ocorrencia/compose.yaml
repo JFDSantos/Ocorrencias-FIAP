@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: mysql
+    image: mysql:8.0 
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_pass
+    ports:
+      - "3306:3306" 
+
+  api-dev:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PROFILE=dev
+      - DATABASE_URL=jdbc:mysql://bdfiapapid-c3c42bb24b-wpdbserver.mysql.database.azure.com:3306/api?createDatabaseIfNotExist=true
+      - DATABASE_USER=root
+      - DATABASE_PWD=root_pass
+
+  api-production:
+    build: .
+    ports:
+      - "8080:8080" 
+    environment:
+      - PROFILE=production
+      - DATABASE_URL=jdbc:mysql://bd-fiap-ocorrencia-producao.mysql.database.azure.com:3306/api?createDatabaseIfNotExist=true
+      - DATABASE_USER=prod_user
+      - DATABASE_PWD=prod_pass

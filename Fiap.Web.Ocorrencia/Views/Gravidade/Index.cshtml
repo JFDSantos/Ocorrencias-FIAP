@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Fiap.Web.Ocorrencias.Models.GravidadeModel>
+
+<h1>Gravidade</h1>
+
+@if (!string.IsNullOrEmpty((String)TempData["mensagemSucesso"]))
+{
+    <div class="alert alert-warning" role="alert">@TempData["mensagemSucesso"]</div>
+}
+
+
+<p>
+    <a asp-controller="Gravidade" asp-action="Create">Nova Gravidade</a>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.id_gravidade</label>
+                </td>
+                <td>
+                    <label>@item.descricao</label>
+                </td>
+                <td>
+                    <!-- asp-route-id é usado para informar o Id do Item selecionado. -->
+                    <a asp-controller="Gravidade"
+                       asp-action="Edit"
+                       asp-route-id="@item.id_gravidade">Editar</a>
+
+                    <a asp-controller="Gravidade"
+                       asp-action="Detail"
+                       asp-route-id="@item.id_gravidade">Consultar</a>
+
+                    <a asp-controller="Gravidade"
+                       asp-action="Delete"
+                       asp-route-id="@item.id_gravidade">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
