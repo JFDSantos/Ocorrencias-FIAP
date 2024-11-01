@@ -66,8 +66,20 @@ namespace Fiap.Web.Ocorrencias.Tests
         public void Post_ReturnsCreatedAtAction_WhenValidObjectPassed()
         {
             // Arrange
-            var localizacaoViewModel = new LocalizacaoViewModel { endereco = "Nova Localização" };
-            var localizacaoModel = new LocalizacaoModel { id_loc = 1, endereco = "Nova Localização" };
+            var localizacaoViewModel = new LocalizacaoViewModel
+            {
+                endereco = "Nova Localização",
+                cidade = "Cidade Exemplo",
+                cep = "00000-000"
+            };
+
+            var localizacaoModel = new LocalizacaoModel
+            {
+                id_loc = 1,
+                endereco = localizacaoViewModel.endereco,
+                cidade = localizacaoViewModel.cidade,
+                cep = localizacaoViewModel.cep
+            };
 
             _mockMapper.Setup(mapper => mapper.Map<LocalizacaoModel>(localizacaoViewModel)).Returns(localizacaoModel);
 
@@ -83,10 +95,10 @@ namespace Fiap.Web.Ocorrencias.Tests
         [Fact]
         public void Put_ReturnsNoContent_WhenValidObjectPassed()
         {
-            // Arrange
             int id = 1;
             var localizacaoViewModel = new LocalizacaoViewModel { id_loc = id, endereco = "Atualizada" };
             var localizacaoModel = new LocalizacaoModel { id_loc = id, endereco = "Atualizada" };
+
 
             _mockMapper.Setup(mapper => mapper.Map<LocalizacaoModel>(localizacaoViewModel)).Returns(localizacaoModel);
 
