@@ -114,6 +114,10 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
 #line 11
     testRunner.And("a lista de roles deve conter duas entradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 12
+    testRunner.And("o contrato da resposta de roles deve estar em conformidade com o JSON Schema \"rol" +
+                        "es-schema.json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
@@ -126,7 +130,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Solicitar lista de roles sem nenhum registro", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 14
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -136,16 +140,16 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 15
     testRunner.Given("que não existem roles cadastradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 16
     testRunner.When("eu faço uma solicitação de roles GET para \"/api/usuariorole\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 17
     testRunner.Then("o status da resposta de roles deve ser 204", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 17
+#line 18
     testRunner.And("o corpo da resposta de roles deve estar vazio", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

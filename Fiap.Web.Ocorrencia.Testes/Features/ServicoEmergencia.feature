@@ -9,6 +9,7 @@
     Then o status da resposta de serviços de emergência deve ser 200
     And o corpo da resposta de serviços de emergência deve conter uma lista de serviços de emergência
     And a lista de serviços de emergência deve conter duas entradas
+    And o contrato da resposta de serviços de emergência deve estar em conformidade com o JSON Schema "servicos-schema.json"
 
   Scenario: Solicitar lista de serviços de emergência sem nenhum registro
     Given que não existem serviços de emergência cadastrados

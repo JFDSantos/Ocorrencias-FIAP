@@ -22,7 +22,13 @@
 
   </ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
+		<None Update="Schemas\gravidade-schema.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
     <ProjectReference Include="..\Fiap.Web.Ocorrencia\Fiap.Web.Ocorrencia.csproj" />
   </ItemGroup>
 

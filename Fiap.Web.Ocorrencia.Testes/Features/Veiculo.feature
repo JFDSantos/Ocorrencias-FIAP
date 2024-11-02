@@ -9,6 +9,7 @@
     Then o status da resposta de veículos deve ser 200
     And o corpo da resposta de veículos deve conter uma lista de veículos
     And a lista de veículos deve conter duas entradas
+    And o contrato da resposta de veículos deve estar em conformidade com o JSON Schema "veiculos-schema.json"
 
   Scenario: Solicitar lista de veículos sem nenhum registro
     Given que não existem veículos cadastrados

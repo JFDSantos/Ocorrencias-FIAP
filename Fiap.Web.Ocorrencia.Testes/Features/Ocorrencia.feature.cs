@@ -115,6 +115,10 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
 #line 11
     testRunner.And("o corpo da resposta de ocorrências deve conter duas ocorrências", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 12
+    testRunner.And("o contrato da resposta de ocorrências deve estar em conformidade com o JSON Schem" +
+                        "a \"ocorrencia-schema.json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
@@ -127,7 +131,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Solicitar lista de ocorrências com referência inválida", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 14
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -137,17 +141,17 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 14
+#line 15
     testRunner.Given("que existem ocorrências cadastradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 15
+#line 16
     testRunner.When("eu faço uma solicitação de ocorrências GET para \"/api/ocorrencia\" com referência " +
                         "-1 e tamanho 10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 16
+#line 17
     testRunner.Then("o status da resposta de ocorrências deve ser 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 17
+#line 18
     testRunner.And("o corpo da resposta de ocorrências deve conter uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -162,7 +166,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Solicitar lista de ocorrências sem ocorrências cadastradas", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 19
+#line 20
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -172,17 +176,17 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 20
+#line 21
     testRunner.Given("que não existem ocorrências cadastradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 21
+#line 22
     testRunner.When("eu faço uma solicitação de ocorrências GET para \"/api/ocorrencia\" com referência " +
                         "0 e tamanho 10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 22
+#line 23
     testRunner.Then("o status da resposta de ocorrências deve ser 204", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 23
+#line 24
     testRunner.And("o corpo da resposta de ocorrências deve estar vazio", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

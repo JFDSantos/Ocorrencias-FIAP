@@ -7,6 +7,9 @@ using Fiap.Web.Ocorrencias.Models;
 using Fiap.Web.Ocorrencias.Services;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json;
 using TechTalk.SpecFlow;
 using Xunit;
 
@@ -123,6 +126,24 @@ namespace Fiap.Web.Ocorrencias.Tests
         {
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(_result.Result);
             Assert.NotNull(badRequestResult.Value);
+        }
+        [Then(@"o contrato da resposta de ocorrências deve estar em conformidade com o JSON Schema ""(.*)""")]
+        public void ThenOContratoDaRespostaDeveEstarEmConformidadeComOJsonSchema(string schemaFileName)
+        {
+            var okResult = Assert.IsType<OkObjectResult>(_result.Result);
+            var jsonResponse = JsonConvert.SerializeObject(okResult.Value);
+            
+            // Definir o caminho completo do schema
+            var schemaPath = Path.Combine(@"C:\Users\jeferson.ferreira\Documents\Projects\Ocorrencias-FIAP\Fiap.Web.Ocorrencia.Testes\Schemas\gravidade-schema.json", schemaFileName);
+            Console.WriteLine($"Schema Path: {schemaPath}");
+
+            // Carregar o JSON Schema
+            var schemaJson = System.IO.File.ReadAllText(schemaPath);
+            var schema = JSchema.Parse(schemaJson);
+
+            // Validar o JSON Response com o JSON Schema
+            var json = JToken.Parse(jsonResponse);
+            Assert.True(json.IsValid(schema), "O JSON de resposta não está em conformidade com o JSON Schema.");
         }
     }
 }

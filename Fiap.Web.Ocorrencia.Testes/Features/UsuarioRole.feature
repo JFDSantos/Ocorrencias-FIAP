@@ -9,6 +9,7 @@
     Then o status da resposta de roles deve ser 200
     And o corpo da resposta de roles deve conter uma lista de roles
     And a lista de roles deve conter duas entradas
+    And o contrato da resposta de roles deve estar em conformidade com o JSON Schema "roles-schema.json"
 
   Scenario: Solicitar lista de roles sem nenhum registro
     Given que não existem roles cadastradas

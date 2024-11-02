@@ -23,10 +23,10 @@ namespace Fiap.Web.Ocorrencias.Tests
         private readonly Mock<IMapper> _mockMapper;
         private readonly GravidadeController _controller;
         private ActionResult<IEnumerable<GravidadePaginacaoReferenciaViewModel>> _result;
-        private readonly string _schemaPath = Path.Combine(Directory.GetCurrentDirectory(), "schemas");
+        private readonly string _schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Schemas");
 
 
-    public GravidadeSteps()
+        public GravidadeSteps()
         {
             _mockGravidadeServices = new Mock<IGravidadeServices>();
             _mockMapper = new Mock<IMapper>();
@@ -131,14 +131,19 @@ namespace Fiap.Web.Ocorrencias.Tests
         {
             var okResult = Assert.IsType<OkObjectResult>(_result.Result);
             var jsonResponse = JsonConvert.SerializeObject(okResult.Value);
+            
+            // Definir o caminho completo do schema
+            var schemaPath = Path.Combine(_schemaPath, schemaFileName);
+            Console.WriteLine($"Schema Path: {schemaPath}");
 
             // Carregar o JSON Schema
-            var schemaJson = System.IO.File.ReadAllText(System.IO.Path.Combine(_schemaPath, schemaFileName));
+            var schemaJson = System.IO.File.ReadAllText(schemaPath);
             var schema = JSchema.Parse(schemaJson);
 
             // Validar o JSON Response com o JSON Schema
             var json = JToken.Parse(jsonResponse);
             Assert.True(json.IsValid(schema), "O JSON de resposta não está em conformidade com o JSON Schema.");
         }
+
     }
 }

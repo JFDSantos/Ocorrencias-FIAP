@@ -111,6 +111,10 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
 #line 10
     testRunner.And("a lista contém 2 atendimentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 11
+    testRunner.And("o contrato da resposta de atendimentos deve estar em conformidade com o JSON Sche" +
+                        "ma \"atendimentos-schema.json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
@@ -123,7 +127,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retornar uma resposta de não encontrado quando não há atendimentos", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 12
+#line 13
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -133,13 +137,13 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 13
+#line 14
     testRunner.Given("que não existem atendimentos cadastrados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 14
+#line 15
     testRunner.When("eu solicito a lista de atendimentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 16
     testRunner.Then("eu recebo uma resposta de não encontrado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -154,7 +158,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retornar um erro ao solicitar uma lista de atendimentos com parâmetros inválidos", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 17
+#line 18
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -164,13 +168,13 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 18
+#line 19
     testRunner.Given("que existem atendimentos cadastrados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 19
+#line 20
     testRunner.When("eu solicito a lista de atendimentos com referência -1 e tamanho -10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 20
+#line 21
     testRunner.Then("eu recebo uma resposta de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

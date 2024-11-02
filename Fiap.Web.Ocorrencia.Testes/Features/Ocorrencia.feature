@@ -9,6 +9,7 @@
     Then o status da resposta de ocorrências deve ser 200
     And o corpo da resposta de ocorrências deve conter uma lista de ocorrências
     And o corpo da resposta de ocorrências deve conter duas ocorrências
+    And o contrato da resposta de ocorrências deve estar em conformidade com o JSON Schema "ocorrencia-schema.json"
 
   Scenario: Solicitar lista de ocorrências com referência inválida
     Given que existem ocorrências cadastradas

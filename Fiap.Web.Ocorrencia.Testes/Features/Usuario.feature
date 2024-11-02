@@ -9,6 +9,7 @@
     Then o status da resposta de usuários deve ser 200
     And o corpo da resposta de usuários deve conter uma lista de usuários
     And a lista de usuários deve conter duas entradas
+    And o contrato da resposta de usuários deve estar em conformidade com o JSON Schema "usuario-schema.json"
 
   Scenario: Solicitar lista de usuários sem nenhum registro
     Given que não existem usuários cadastrados

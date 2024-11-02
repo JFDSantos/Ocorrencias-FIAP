@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Gravidade": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id_gravidade": { "type": "integer" },
+          "descricao": { "type": "string" }
+        },
+        "required": ["id_gravidade", "descricao"]
+      }
+    },
+    "PageSize": { "type": "integer" },
+    "Ref": { "type": "integer" },
+    "NextRef": { "type": "integer" }
+  },
+  "required": ["Gravidade", "PageSize", "Ref", "NextRef"]
+}

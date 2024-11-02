@@ -114,6 +114,10 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
 #line 11
     testRunner.And("a lista de usuários deve conter duas entradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 12
+    testRunner.And("o contrato da resposta de usuários deve estar em conformidade com o JSON Schema \"" +
+                        "usuario-schema.json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
@@ -126,7 +130,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Solicitar lista de usuários sem nenhum registro", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 13
+#line 14
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -136,19 +140,19 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 14
-    testRunner.Given("que não existem usuários cadastrados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 15
-    testRunner.When("eu faço uma solicitação de usuários GET para \"/api/usuario\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given("que não existem usuários cadastrados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 16
     testRunner.When("eu faço uma solicitação de usuários GET para \"/api/usuario\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 17
-    testRunner.Then("o status da resposta de usuários deve ser 204", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("eu faço uma solicitação de usuários GET para \"/api/usuario\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
+    testRunner.Then("o status da resposta de usuários deve ser 204", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 19
     testRunner.And("o corpo da resposta de usuários deve estar vazio", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -163,7 +167,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Solicitar usuário com ID inválido", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 20
+#line 21
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -173,17 +177,17 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 21
+#line 22
     testRunner.Given("que o ID do usuário é inválido", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 22
+#line 23
     testRunner.When("eu faço uma solicitação de usuários GET para \"/api/usuario/{id_invalido}\" com o I" +
                         "D inválido", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 23
+#line 24
     testRunner.Then("o status da resposta de usuários deve ser 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 24
+#line 25
     testRunner.And("o corpo da resposta de usuários deve conter uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
