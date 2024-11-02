@@ -23,7 +23,7 @@ namespace Fiap.Web.Ocorrencias.Tests
         private readonly Mock<IMapper> _mockMapper;
         private readonly GravidadeController _controller;
         private ActionResult<IEnumerable<GravidadePaginacaoReferenciaViewModel>> _result;
-        private readonly string _schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\Schemas");
+        private readonly string _schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Schemas");
 
 
         public GravidadeSteps()

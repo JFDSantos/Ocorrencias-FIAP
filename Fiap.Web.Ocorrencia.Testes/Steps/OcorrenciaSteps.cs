@@ -22,7 +22,7 @@ namespace Fiap.Web.Ocorrencias.Tests
         private readonly Mock<IMapper> _mockMapper;
         private readonly OcorrenciaController _controller;
         private ActionResult<IEnumerable<OcorrenciaPaginacaoReferenciaViewModel>> _result;
-
+        private readonly string _schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Schemas");
         public OcorrenciaSteps()
         {
             _mockOcorrenciaServices = new Mock<IOcorrenciaServices>();
@@ -134,7 +134,7 @@ namespace Fiap.Web.Ocorrencias.Tests
             var jsonResponse = JsonConvert.SerializeObject(okResult.Value);
             
             // Definir o caminho completo do schema
-            var schemaPath = Path.Combine(@"C:\Users\jeferson.ferreira\Documents\Projects\Ocorrencias-FIAP\Fiap.Web.Ocorrencia.Testes\Schemas\gravidade-schema.json", schemaFileName);
+            var schemaPath = Path.Combine(_schemaPath, schemaFileName);
             Console.WriteLine($"Schema Path: {schemaPath}");
 
             // Carregar o JSON Schema

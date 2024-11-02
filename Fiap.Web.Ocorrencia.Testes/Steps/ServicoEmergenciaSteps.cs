@@ -21,7 +21,7 @@ namespace Fiap.Web.Ocorrencia.Testes
         private readonly ServicoEmergenciaController _controller;
         private ActionResult<IEnumerable<ServicoEmergenciaViewModel>> _result;
         private ActionResult<ServicoEmergenciaViewModel> _singleResult;
-
+        private readonly string _schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Schemas");
         public ServicoEmergenciaSteps()
         {
             _mockServicoEmergenciaServices = new Mock<IServEmergenciaServices>();
@@ -161,7 +161,7 @@ namespace Fiap.Web.Ocorrencia.Testes
             var jsonResponse = JsonConvert.SerializeObject(okResult.Value);
 
             // Definir o caminho completo do schema
-            var schemaPath = Path.Combine(@"C:\Users\jeferson.ferreira\Documents\Projects\Ocorrencias-FIAP\Fiap.Web.Ocorrencia.Testes\Schemas\gravidade-schema.json", schemaFileName);
+            var schemaPath = Path.Combine(_schemaPath, schemaFileName);
             Console.WriteLine($"Schema Path: {schemaPath}");
 
             // Carregar o JSON Schema
