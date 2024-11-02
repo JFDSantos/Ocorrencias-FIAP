@@ -1,59 +1,84 @@
-﻿using Fiap.Web.Ocorrencia.Controllers;
+﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Fiap.Web.Ocorrencia.Controllers;
 using Fiap.Web.Ocorrencia.Services;
 using Fiap.Web.Ocorrencias.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Moq;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+using TechTalk.SpecFlow;
 using Xunit;
 
 namespace Fiap.Web.Ocorrencias.Tests
 {
-    public class AuthControllerTests
+    [Binding]
+    public class AuthSteps
     {
         private readonly Mock<IAuthServices> _mockAuthService;
         private readonly AuthController _authController;
+        private ActionResult _result;
+        private UsuarioModel _user;
 
-        public AuthControllerTests()
+        public AuthSteps()
         {
             _mockAuthService = new Mock<IAuthServices>();
             _authController = new AuthController(_mockAuthService.Object);
         }
 
-        [Fact]
-        public void Login_ReturnsToken_OnSuccessfulAuthentication()
+        [Given(@"que o usuário possui credenciais válidas")]
+        public void GivenQueOUsuarioPossuiCredenciaisValidas()
         {
-            // Arrange
-            var user = new UsuarioModel
+            _user = new UsuarioModel
             {
                 email = "test@example.com",
                 senha = "password",
                 Role = new UsuarioRoleModel { role = "user" }
             };
 
-            // Mock para simular autenticação bem-sucedida
-            _mockAuthService.Setup(s => s.Authenticate(user.email, user.senha)).Returns(user);
+            _mockAuthService.Setup(s => s.Authenticate(_user.email, _user.senha)).Returns(_user);
+        }
 
-            // Act
-            var result = _authController.Login(user) as OkObjectResult;
+        [Given(@"que o usuário possui credenciais inválidas")]
+        public void GivenQueOUsuarioPossuiCredenciaisInvalidas()
+        {
+            _user = new UsuarioModel
+            {
+                email = "invalid@example.com",
+                senha = "invalidpassword"
+            };
 
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(200, result.StatusCode);
+            _mockAuthService.Setup(s => s.Authenticate(_user.email, _user.senha)).Returns((UsuarioModel)null);
+        }
 
-            var token = GenerateJwtToken(user);
+        [When(@"eu realizo o login")]
+        public void WhenEuRealizoOLogin()
+        {
+            _result = (ActionResult)_authController.Login(_user);
+        }
 
+        [Then(@"eu recebo uma resposta de sucesso com um token JWT válido")]
+        public void ThenEuReceboUmaRespostaDeSucessoComUmTokenJwtValido()
+        {
+            var okResult = Assert.IsType<OkObjectResult>(_result);
+            Assert.Equal(200, okResult.StatusCode);
+
+            var token = GenerateJwtToken(_user);
             Assert.NotNull(token);
 
-            // Validar o token JWT
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadJwtToken(token);
 
-            Assert.Equal("fiap", jwtToken.Issuer); // Verifica se o emissor do token é 'fiap'
-            Assert.True(jwtToken.ValidTo > DateTime.UtcNow); // Verifica se o token não expirou
+            Assert.Equal("fiap", jwtToken.Issuer);
+            Assert.True(jwtToken.ValidTo > DateTime.UtcNow);
+        }
+
+        [Then(@"eu recebo uma resposta de não autorizado")]
+        public void ThenEuReceboUmaRespostaDeNaoAutorizado()
+        {
+            var unauthorizedResult = Assert.IsType<UnauthorizedResult>(_result);
+            Assert.Equal(401, unauthorizedResult.StatusCode);
         }
 
         private string GenerateJwtToken(UsuarioModel user)
@@ -80,27 +105,6 @@ namespace Fiap.Web.Ocorrencias.Tests
             var tokenHandler = new JwtSecurityTokenHandler();
             var securityToken = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(securityToken);
-        }
-
-        [Fact]
-        public void Login_ReturnsUnauthorized_OnFailedAuthentication()
-        {
-            // Arrange
-            var invalidUser = new UsuarioModel
-            {
-                email = "invalid@example.com",
-                senha = "invalidpassword"
-            };
-
-            // Mock para simular autenticação falha
-            _mockAuthService.Setup(s => s.Authenticate(invalidUser.email, invalidUser.senha)).Returns((UsuarioModel)null);
-
-            // Act
-            var result = _authController.Login(invalidUser) as UnauthorizedResult;
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.Equal(401, result.StatusCode);
         }
     }
 }

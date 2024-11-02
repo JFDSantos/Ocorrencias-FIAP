@@ -86,5 +86,14 @@ namespace Fiap.Web.Ocorrencias.Tests
             var badRequestResult = Assert.IsType<BadRequestResult>(_result.Result);
             Assert.Equal(400, badRequestResult.StatusCode); // Verifica se o status code é 400 Bad Request
         }
+
+        [Then(@"a lista contém (.*) atendimentos")]
+        public void ThenAListaContemAtendimentos(int quantidadeEsperada)
+        {
+            var okResult = Assert.IsType<OkObjectResult>(_result.Result);
+            var viewModel = Assert.IsType<AtendimentoPaginacaoReferenciaViewModel>(okResult.Value);
+            Assert.Equal(quantidadeEsperada, viewModel.Atendimento.Count());
+        }
+
     }
 }

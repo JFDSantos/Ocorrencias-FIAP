@@ -29,7 +29,7 @@ namespace Fiap.Web.Ocorrencia.Controllers
             var lista = _usuariosServices.ListarRoles();
             var viewModelList = _mapper.Map<IEnumerable<UsuarioRoleViewModel>>(lista);
 
-            if (viewModelList == null)
+            if (viewModelList == null || !viewModelList.Any())
             {
                 return NoContent();
             }
