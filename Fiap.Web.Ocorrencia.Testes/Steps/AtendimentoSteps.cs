@@ -98,7 +98,7 @@ namespace Fiap.Web.Ocorrencias.Tests
             Assert.Equal(quantidadeEsperada, viewModel.Atendimento.Count());
         }
 
-        [Then(@"o contrato da resposta atendimentos deve estar em conformidade com o JSON Schema ""(.*)""")]
+        [Then(@"o contrato da resposta de atendimentos deve estar em conformidade com o JSON Schema ""(.*)""")]
         public void ThenOContratoDaRespostaDeveEstarEmConformidadeComOJsonSchema(string schemaFileName)
         {
             var okResult = Assert.IsType<OkObjectResult>(_result.Result);

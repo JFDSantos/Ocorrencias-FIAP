@@ -1,0 +1,42 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "Ocorrencia": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id_ocorrencia": {
+            "type": "integer"
+          },
+          "data_hora": {
+            "type": "string",
+            "format": "date-time" // Se você quiser garantir o formato ISO 8601
+          },
+          "descricao": {
+            "type": "string"
+          },
+          "id_loc": {
+            "type": "integer"
+          },
+          "id_gravidade": {
+            "type": "integer"
+          },
+          "id_atendimento": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id_ocorrencia",
+          "data_hora",
+          "descricao",
+          "id_loc",
+          "id_gravidade",
+          "id_atendimento"
+        ]
+      }
+    }
+  },
+  "required": [ "Ocorrencia" ]
+}

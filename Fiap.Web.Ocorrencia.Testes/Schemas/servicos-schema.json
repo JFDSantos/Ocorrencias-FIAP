@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id_serv_emergencia": {
+        "type": "integer"
+      },
+      "descricao": {
+        "type": "string"
+      }
+    },
+    "required": [ "id_serv_emergencia", "descricao" ]
+  }
+}

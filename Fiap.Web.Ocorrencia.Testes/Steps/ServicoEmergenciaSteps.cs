@@ -162,7 +162,6 @@ namespace Fiap.Web.Ocorrencia.Testes
 
             // Definir o caminho completo do schema
             var schemaPath = Path.Combine(_schemaPath, schemaFileName);
-            Console.WriteLine($"Schema Path: {schemaPath}");
 
             // Carregar o JSON Schema
             var schemaJson = System.IO.File.ReadAllText(schemaPath);
