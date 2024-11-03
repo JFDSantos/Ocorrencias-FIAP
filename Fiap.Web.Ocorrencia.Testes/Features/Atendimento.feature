@@ -8,6 +8,7 @@
     When eu solicito a lista de atendimentos
     Then eu recebo uma resposta de sucesso com a lista de atendimentos
     And a lista contém 2 atendimentos
+    And o contrato da resposta de atendimentos deve estar em conformidade com o JSON Schema "atendimentos-schema.json"
 
   Scenario: Retornar uma resposta de não encontrado quando não há atendimentos
     Given que não existem atendimentos cadastrados

@@ -19,7 +19,7 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class AtendimentoFeatureFeature : object, Xunit.IClassFixture<AtendimentoFeatureFeature.FixtureData>, System.IDisposable
+    public partial class GravidadeAPIFeature : object, Xunit.IClassFixture<GravidadeAPIFeature.FixtureData>, System.IDisposable
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -28,10 +28,10 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
         
         private Xunit.Abstractions.ITestOutputHelper _testOutputHelper;
         
-#line 1 "Atendimento.feature"
+#line 1 "Gravidade.feature"
 #line hidden
         
-        public AtendimentoFeatureFeature(AtendimentoFeatureFeature.FixtureData fixtureData, Fiap_Web_Ocorrencia_Testes_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public GravidadeAPIFeature(GravidadeAPIFeature.FixtureData fixtureData, Fiap_Web_Ocorrencia_Testes_XUnitAssemblyFixture assemblyFixture, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
             this.TestInitialize();
@@ -40,8 +40,8 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
         public static void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AtendimentoFeature", "  Como um usuário do sistema\r\n  Eu quero buscar uma lista de atendimentos\r\n  Para" +
-                    " que eu possa ver quais atendimentos estão disponíveis", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Gravidade API", "  Como usuário do sistema\r\n  Eu quero interagir com a API de gravidade\r\n  Para qu" +
+                    "e eu possa visualizar e verificar os dados de gravidade", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -81,14 +81,14 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             this.TestTearDown();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Retornar uma lista de atendimentos com sucesso")]
-        [Xunit.TraitAttribute("FeatureTitle", "AtendimentoFeature")]
-        [Xunit.TraitAttribute("Description", "Retornar uma lista de atendimentos com sucesso")]
-        public void RetornarUmaListaDeAtendimentosComSucesso()
+        [Xunit.SkippableFactAttribute(DisplayName="Obter lista de gravidades com sucesso")]
+        [Xunit.TraitAttribute("FeatureTitle", "Gravidade API")]
+        [Xunit.TraitAttribute("Description", "Obter lista de gravidades com sucesso")]
+        public void ObterListaDeGravidadesComSucesso()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retornar uma lista de atendimentos com sucesso", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Obter lista de gravidades com sucesso", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -100,33 +100,33 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             {
                 this.ScenarioStart();
 #line 7
-    testRunner.Given("que existem atendimentos cadastrados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("que existem gravidades cadastradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 8
-    testRunner.When("eu solicito a lista de atendimentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("eu faço uma solicitação GET para \"/api/gravidade\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
-    testRunner.Then("eu recebo uma resposta de sucesso com a lista de atendimentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("o status da resposta deve ser 200", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 10
-    testRunner.And("a lista contém 2 atendimentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("o corpo da resposta deve conter uma lista de gravidades", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
-    testRunner.And("o contrato da resposta de atendimentos deve estar em conformidade com o JSON Sche" +
-                        "ma \"atendimentos-schema.json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("o contrato da resposta deve estar em conformidade com o JSON Schema \"gravidade-sc" +
+                        "hema.json\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Retornar uma resposta de não encontrado quando não há atendimentos")]
-        [Xunit.TraitAttribute("FeatureTitle", "AtendimentoFeature")]
-        [Xunit.TraitAttribute("Description", "Retornar uma resposta de não encontrado quando não há atendimentos")]
-        public void RetornarUmaRespostaDeNaoEncontradoQuandoNaoHaAtendimentos()
+        [Xunit.SkippableFactAttribute(DisplayName="Obter lista de gravidades com falha - Gravidades não encontradas")]
+        [Xunit.TraitAttribute("FeatureTitle", "Gravidade API")]
+        [Xunit.TraitAttribute("Description", "Obter lista de gravidades com falha - Gravidades não encontradas")]
+        public void ObterListaDeGravidadesComFalha_GravidadesNaoEncontradas()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retornar uma resposta de não encontrado quando não há atendimentos", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Obter lista de gravidades com falha - Gravidades não encontradas", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 13
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -138,27 +138,30 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             {
                 this.ScenarioStart();
 #line 14
-    testRunner.Given("que não existem atendimentos cadastrados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("que não existem gravidades cadastradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 15
-    testRunner.When("eu solicito a lista de atendimentos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("eu faço uma solicitação GET para \"/api/gravidade\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 16
-    testRunner.Then("eu recebo uma resposta de não encontrado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("o status da resposta deve ser 204", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 17
+    testRunner.And("o corpo da resposta deve estar vazio", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
-        [Xunit.SkippableFactAttribute(DisplayName="Retornar um erro ao solicitar uma lista de atendimentos com parâmetros inválidos")]
-        [Xunit.TraitAttribute("FeatureTitle", "AtendimentoFeature")]
-        [Xunit.TraitAttribute("Description", "Retornar um erro ao solicitar uma lista de atendimentos com parâmetros inválidos")]
-        public void RetornarUmErroAoSolicitarUmaListaDeAtendimentosComParametrosInvalidos()
+        [Xunit.SkippableFactAttribute(DisplayName="Solicitar lista de gravidades com parâmetros inválidos")]
+        [Xunit.TraitAttribute("FeatureTitle", "Gravidade API")]
+        [Xunit.TraitAttribute("Description", "Solicitar lista de gravidades com parâmetros inválidos")]
+        public void SolicitarListaDeGravidadesComParametrosInvalidos()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retornar um erro ao solicitar uma lista de atendimentos com parâmetros inválidos", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Solicitar lista de gravidades com parâmetros inválidos", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 19
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -168,14 +171,18 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             else
             {
                 this.ScenarioStart();
-#line 19
-    testRunner.Given("que existem atendimentos cadastrados", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 20
-    testRunner.When("eu solicito a lista de atendimentos com referência -1 e tamanho -10", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.Given("que existem gravidades cadastradas", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 21
-    testRunner.Then("eu recebo uma resposta de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.When("eu faço uma solicitação GET para \"/api/gravidade\" com referência -1 e tamanho -10" +
+                        "", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 22
+    testRunner.Then("o status da resposta deve ser 400", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 23
+    testRunner.And("o corpo da resposta deve conter uma mensagem de erro", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -188,12 +195,12 @@ namespace Fiap.Web.Ocorrencia.Testes.Features
             
             public FixtureData()
             {
-                AtendimentoFeatureFeature.FeatureSetup();
+                GravidadeAPIFeature.FeatureSetup();
             }
             
             void System.IDisposable.Dispose()
             {
-                AtendimentoFeatureFeature.FeatureTearDown();
+                GravidadeAPIFeature.FeatureTearDown();
             }
         }
     }

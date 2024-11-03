@@ -1,0 +1,16 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id_usuario": {
+        "type": "integer"
+      },
+      "nome": {
+        "type": "string"
+      }
+    },
+    "required": [ "id_usuario", "nome" ]
+  }
+}

@@ -29,7 +29,7 @@ namespace Fiap.Web.Ocorrencia.Controllers
             var lista = _veiculoServices.ListarVeiculos();
             var viewModelList = _mapper.Map<IEnumerable<VeiculoViewModel>>(lista);
 
-            if (viewModelList == null)
+            if (viewModelList == null || !viewModelList.Any())
             {
                 return NoContent();
             }
@@ -45,6 +45,8 @@ namespace Fiap.Web.Ocorrencia.Controllers
         {
 
             var model = _veiculoServices.ObterVeiculosPorId(id);
+
+            if (id <= 0) { return BadRequest("Parâmetros inválidos."); }
 
             if (model == null)
             {

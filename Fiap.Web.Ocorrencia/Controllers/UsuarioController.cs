@@ -30,7 +30,7 @@ namespace Fiap.Web.Ocorrencia.Controllers
             var lista = _usuariosServices.ListarUsuarios();
             var viewModelList = _mapper.Map<IEnumerable<UsuarioViewModel>>(lista);
 
-            if (viewModelList == null)
+            if (viewModelList == null || !viewModelList.Any())
             {
                 return NoContent();
             }
@@ -46,6 +46,8 @@ namespace Fiap.Web.Ocorrencia.Controllers
         {
 
             var model = _usuariosServices.ObterUsuarioPorId(id);
+
+            if (id <= 0) { return BadRequest("Parâmetros inválidos."); }
 
             if (model == null)
             {

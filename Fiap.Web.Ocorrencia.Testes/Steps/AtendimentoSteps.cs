@@ -5,6 +5,9 @@ using Fiap.Web.Ocorrencia.ViewModel;
 using Fiap.Web.Ocorrencias.Models;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Schema;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using TechTalk.SpecFlow;
@@ -19,7 +22,7 @@ namespace Fiap.Web.Ocorrencias.Tests
         private readonly Mock<IMapper> _mockMapper;
         private readonly AtendimentoController _atendimentoController;
         private ActionResult<AtendimentoPaginacaoReferenciaViewModel> _result; // Corrigido para o tipo correto
-
+        private readonly string _schemaPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"../../../Schemas");
         public AtendimentoSteps()
         {
             _mockAtendimentoService = new Mock<IAtendimentoServices>();
@@ -86,5 +89,33 @@ namespace Fiap.Web.Ocorrencias.Tests
             var badRequestResult = Assert.IsType<BadRequestResult>(_result.Result);
             Assert.Equal(400, badRequestResult.StatusCode); // Verifica se o status code é 400 Bad Request
         }
+
+        [Then(@"a lista contém (.*) atendimentos")]
+        public void ThenAListaContemAtendimentos(int quantidadeEsperada)
+        {
+            var okResult = Assert.IsType<OkObjectResult>(_result.Result);
+            var viewModel = Assert.IsType<AtendimentoPaginacaoReferenciaViewModel>(okResult.Value);
+            Assert.Equal(quantidadeEsperada, viewModel.Atendimento.Count());
+        }
+
+        [Then(@"o contrato da resposta de atendimentos deve estar em conformidade com o JSON Schema ""(.*)""")]
+        public void ThenOContratoDaRespostaDeveEstarEmConformidadeComOJsonSchema(string schemaFileName)
+        {
+            var okResult = Assert.IsType<OkObjectResult>(_result.Result);
+            var jsonResponse = JsonConvert.SerializeObject(okResult.Value);
+
+            // Definir o caminho completo do schema
+            var schemaPath = Path.Combine(_schemaPath, schemaFileName);
+            Console.WriteLine($"Schema Path: {schemaPath}");
+
+            // Carregar o JSON Schema
+            var schemaJson = System.IO.File.ReadAllText(schemaPath);
+            var schema = JSchema.Parse(schemaJson);
+
+            // Validar o JSON Response com o JSON Schema
+            var json = JToken.Parse(jsonResponse);
+            Assert.True(json.IsValid(schema), "O JSON de resposta não está em conformidade com o JSON Schema.");
+        }
+
     }
 }

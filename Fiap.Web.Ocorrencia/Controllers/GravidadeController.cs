@@ -32,6 +32,11 @@ namespace Fiap.Web.Ocorrencia.Controllers
                 return NoContent();
             }
 
+            if (referencia < 0 || tamanho < 0)
+            {
+                return BadRequest("Parâmetros inválidos.");
+            }
+
             var viewModelList = _mapper.Map<IEnumerable<GravidadeViewModel>>(lista);
 
             var viewModel = new GravidadePaginacaoReferenciaViewModel

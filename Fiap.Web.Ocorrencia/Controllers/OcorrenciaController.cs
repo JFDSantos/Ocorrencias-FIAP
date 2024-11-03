@@ -31,6 +31,11 @@ namespace Fiap.Web.Ocorrencia.Controllers
             var lista = _ocorrenciaServices.ListarOcorrenciaUltimaReferencia(referencia,tamanho);
             var viewModelList = _mapper.Map<IEnumerable<OcorrenciaViewModel>>(lista);
 
+            if (referencia < 0 || tamanho < 0)
+            {
+                return BadRequest("Parâmetros inválidos.");
+            }
+
             if (viewModelList.Count() > 0)
             {
                 var viewModel = new OcorrenciaPaginacaoReferenciaViewModel

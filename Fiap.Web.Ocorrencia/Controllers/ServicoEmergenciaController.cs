@@ -30,7 +30,7 @@ namespace Fiap.Web.Ocorrencia.Controllers
             var lista = _servEmergenciaServices.ListarServicoEmergencia();
             var viewModelList = _mapper.Map<IEnumerable<ServicoEmergenciaViewModel>>(lista);
 
-            if (viewModelList == null)
+            if (viewModelList == null || !viewModelList.Any())
             {
                 return NoContent();
             }
@@ -46,6 +46,8 @@ namespace Fiap.Web.Ocorrencia.Controllers
         {
 
             var model = _servEmergenciaServices.ObterListarServicoEmergenciaPorId(id);
+
+            if (id <= 0 ) { return BadRequest("Parâmetros inválidos."); }
 
             if (model == null)
             {
